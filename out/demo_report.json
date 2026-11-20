@@ -1,0 +1,75 @@
+{
+  "scenarios": [
+    {
+      "name": "two_stage_spike_evap",
+      "status": "feasible",
+      "endpoints": {
+        "s1": {
+          "min": "12",
+          "max": "12",
+          "unique": true
+        }
+      }
+    },
+    {
+      "name": "shared_sample_two_mixtures",
+      "status": "feasible",
+      "endpoints": {
+        "s1": {
+          "min": "15",
+          "max": "15",
+          "unique": true
+        }
+      }
+    },
+    {
+      "name": "range_from_uncertainty",
+      "status": "feasible",
+      "endpoints": {
+        "s1": {
+          "min": "25",
+          "max": "35",
+          "unique": false
+        }
+      }
+    },
+    {
+      "name": "incompatible_readings",
+      "status": "contradiction",
+      "endpoints": {}
+    },
+    {
+      "name": "two_unknowns_unique",
+      "status": "feasible",
+      "endpoints": {
+        "s1": {
+          "min": "10",
+          "max": "10",
+          "unique": true
+        },
+        "s2": {
+          "min": "40",
+          "max": "40",
+          "unique": true
+        }
+      }
+    },
+    {
+      "name": "zero_coefficient_contradiction",
+      "status": "contradiction",
+      "endpoints": {}
+    }
+  ],
+  "checks": [
+    "two-stage: 100+s1 over 4 mL pins s1=12 exactly",
+    "over-draw batch rolled back atomically",
+    "correction replayed from prior state; old analysis preserved; new analysis consumed new product",
+    "correction of a consumed product version refused",
+    "unconsumed correction replayed from prior state",
+    "databases reopen with identical state"
+  ],
+  "ledger_steps": 4,
+  "containers": 3,
+  "measurements": 2,
+  "analyses": 2
+}
